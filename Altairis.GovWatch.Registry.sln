@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.GovWatch.Registry.Data", "Altairis.GovWatch.Registry.Data\Altairis.GovWatch.Registry.Data.csproj", "{6ED17097-D4D0-48E5-AB60-3185BEAF8D08}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.GovWatch.Registry.Web", "Altairis.GovWatch.Registry.Web\Altairis.GovWatch.Registry.Web.csproj", "{AC8F080E-A638-44EF-AF6F-28F1D55186FD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6ED17097-D4D0-48E5-AB60-3185BEAF8D08}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6ED17097-D4D0-48E5-AB60-3185BEAF8D08}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6ED17097-D4D0-48E5-AB60-3185BEAF8D08}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6ED17097-D4D0-48E5-AB60-3185BEAF8D08}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AC8F080E-A638-44EF-AF6F-28F1D55186FD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AC8F080E-A638-44EF-AF6F-28F1D55186FD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AC8F080E-A638-44EF-AF6F-28F1D55186FD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AC8F080E-A638-44EF-AF6F-28F1D55186FD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0B3782F0-59BC-4798-BB81-323E4A867380}
+	EndGlobalSection
+EndGlobal
