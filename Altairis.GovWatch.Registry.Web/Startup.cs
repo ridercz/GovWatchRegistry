@@ -79,6 +79,7 @@ namespace Altairis.GovWatch.Registry.Web {
                 app.UseDeveloperExceptionPage();
             }
             app.UseMvc();
+            app.UseStaticFiles();
         }
 
     }

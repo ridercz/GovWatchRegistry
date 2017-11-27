@@ -1,0 +1,42 @@
+﻿@import "_vars.scss";
+
+html {
+    font-family: $FontSans;
+    font-size: 16px;
+    background-color: $White;
+    color: $Black;
+
+    body {
+        max-width: 1000px;
+        margin: 0 auto;
+
+        > footer {
+            font-family: $FontSerif;
+            font-size: 12px;
+            text-align: right;
+            color: $Orange;
+            border-top: 2px solid $Orange;
+            margin: 3ex 0;
+            padding: 1ex 0 0 0;
+        }
+    }
+}
+
+h1 {
+    font-family: $FontSerif;
+    font-weight: 100;
+    font-size: 36px;
+    margin: 1ex 0;
+    padding: 0 0 .5ex 0;
+    color: $Orange;
+    border-bottom: 2px solid $Orange;
+}
+
+h2 {
+    font-family: $FontSerif;
+    font-weight: 300;
+    font-size: 26px;
+    color: $Green;
+    margin: 1ex 0;
+    padding: 0;
+}

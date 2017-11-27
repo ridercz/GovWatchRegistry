@@ -3,7 +3,12 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@(string.IsNullOrEmpty(this.ViewBag.Title) ? "Registr státních webů" : this.ViewBag.Title + " | Registr státních webů")</title>
-    <link rel="stylesheet" type="text/css" href="~/Styles/site.css" asp-append-version="true" />
+    <environment include="Development">
+        <link rel="stylesheet" type="text/css" href="~/Content/Styles/site.css" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" type="text/css" href="~/Content/Styles/site.min.css" asp-append-version="true" />
+    </environment>
     @RenderSection("Head", required: false)
 </head>
 <body>

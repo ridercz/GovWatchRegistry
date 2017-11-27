@@ -1,0 +1,90 @@
+﻿@import "_vars.scss";
+
+form {
+    input {
+        box-sizing: border-box;
+
+        &[type=text], &[type=password], textarea {
+            font-family: $FontMono;
+            font-size: 15px;
+            padding: 1ex;
+            width: 100%;
+            background-color: lighten($Green, 50);
+            border: none;
+            border-radius: 3px;
+
+            &:focus {
+                border: 1px solid $Green;
+            }
+        }
+
+        &[type=submit], &[type=button] {
+            border: none;
+            background-color: $Green;
+            color: $TrueWhite;
+            padding: 1ex 3ex;
+            font-weight: bold;
+            min-width: 20ex;
+            border-radius: 3px;
+
+            &:hover {
+                background-color: $Orange;
+            }
+        }
+
+        &[type=checkbox] {
+            width: 20px;
+            height: 20px;
+            vertical-align: text-bottom;
+        }
+    }
+}
+
+table.form {
+    background-color: $TrueWhite;
+    width: 100%;
+    border: none;
+    border-collapse: collapse;
+    border-radius: 1ex;
+
+    tbody {
+        th {
+            font-weight: normal;
+            width: 20%;
+            text-align: left;
+            padding: 1ex 1ex 0 1ex;
+            white-space: nowrap;
+        }
+
+        td {
+            padding: 1ex 1ex 0 0;
+
+            &:nth-last-child(1) {
+                padding-bottom: 1ex;
+            }
+        }
+    }
+
+    tfoot {
+        td, th {
+            border-top: 1px dotted lighten($Green, 30);
+            padding: 1ex 1ex 1ex 0;
+        }
+    }
+
+    .validation-summary-valid {
+        display: none;
+    }
+
+    .validation-summary-errors {
+        border-radius: 3px;
+        background-color: lighten($Orange, 40);
+        color: $Orange;
+        padding: 1ex;
+        margin-bottom: 1ex;
+
+        ul {
+            margin: 0;
+        }
+    }
+}
