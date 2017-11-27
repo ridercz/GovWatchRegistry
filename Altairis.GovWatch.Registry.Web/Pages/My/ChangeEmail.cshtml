@@ -1,0 +1,27 @@
+﻿@page
+@model ChangeEmailModel
+@{ this.ViewBag.Title = "Změna e-mailové adresy"; }
+<h2>@this.ViewBag.Title</h2>
+<form method="post">
+    <table class="form">
+        <tbody>
+            <tr>
+                <th><label asp-for="Input.Password"></label></th>
+                <td><input asp-for="Input.Password" /></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.NewEmail"></label></th>
+                <td><input asp-for="Input.NewEmail" /></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td>
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="Odeslat" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>

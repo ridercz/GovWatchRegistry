@@ -1,0 +1,35 @@
+﻿@page
+@model LoginOtpModel
+@{ this.ViewBag.Title = "Dvoufaktorová autentizace"; }
+<h2>@this.ViewBag.Title</h2>
+<p>
+    Zadejte autentizační kód z mobilní aplikace.
+    Pokud aplikaci nemáte k dispozici, můžete se
+    <a asp-page="LoginRecovery">přihlásit jednorázovým záchranným kódem.</a>
+</p>
+<form method="post">
+    <table class="form">
+        <tbody>
+            <tr>
+                <th><label asp-for="Input.OtpCode"></label></th>
+                <td><input asp-for="Input.OtpCode" /></td>
+            </tr>
+            <tr>
+                <th></th>
+                <td>
+                    <input asp-for="Input.RememberDevice" />
+                    <label asp-for="Input.RememberDevice"></label>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td>
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="Odeslat" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>

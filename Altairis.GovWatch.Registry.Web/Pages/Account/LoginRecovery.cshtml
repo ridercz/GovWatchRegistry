@@ -1,0 +1,23 @@
+﻿@page
+@model LoginRecoveryModel
+@{ this.ViewBag.Title = "Přihlášení jednorázovým záchranným kódem"; }
+<h2>@this.ViewBag.Title</h2>
+<form method="post">
+    <table class="form">
+        <tbody>
+            <tr>
+                <th><label asp-for="RecoveryCode"></label></th>
+                <td><input asp-for="RecoveryCode" /></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td>
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="Odeslat" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
