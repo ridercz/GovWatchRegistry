@@ -7,8 +7,8 @@ namespace Altairis.GovWatch.Registry.Data {
     public class ApplicationRole : IdentityRole<int> {
 
         public const string MonitorRoleName = "Monitor";
-        public const string UserRoleName = "User";
-        public const string AdminRoleName = "Admin";
+        public const string OperatorRoleName = "Operator";
+        public const string AdministratorRoleName = "Administrator";
 
     }
 }
