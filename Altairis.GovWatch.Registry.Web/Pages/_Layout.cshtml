@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@(string.IsNullOrEmpty(this.ViewBag.Title) ? "Registr státních webů" : this.ViewBag.Title + " | Registr státních webů")</title>
+    <link rel="stylesheet" type="text/css" href="~/Styles/site.css" asp-append-version="true" />
+    @RenderSection("Head", required: false)
+</head>
+<body>
+    <header>
+        <h1>Registr státních webů</h1>
+    </header>
+    <main>
+        <div>
+            @RenderBody()
+        </div>
+    </main>
+    <footer>
+        Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, @DateTime.Today.Year - built using ASP.NET Core
+    </footer>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>
