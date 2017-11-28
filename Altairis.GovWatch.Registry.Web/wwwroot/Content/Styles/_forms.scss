@@ -1,15 +1,15 @@
 ﻿@import "_vars.scss";
 
 @mixin button {
-    display:inline-block;
-    text-align:center;
+    display: inline-block;
+    text-align: center;
     font-family: $FontSans;
     font-size: 15px;
     font-weight: bold;
     border: 1px solid $Green;
     background-color: $Green;
     color: $TrueWhite;
-    padding: 1ex 3ex;
+    padding: $Padding 3ex;
     border-radius: 3px;
     text-decoration: none;
     cursor: pointer;
@@ -37,7 +37,7 @@ form {
         &[type=text], &[type=password], textarea {
             font-family: $FontMono;
             font-size: 15px;
-            padding: 1ex;
+            padding: $Padding;
             width: 100%;
             background-color: lighten($Green, 50);
             border: none;
@@ -69,22 +69,24 @@ table.form {
     width: 100%;
     border: none;
     border-collapse: collapse;
-    border-radius: 1ex;
+    border-radius: $Padding;
 
     tbody {
         th {
             font-weight: normal;
             width: 20%;
             text-align: left;
-            padding: 1ex 1ex 0 1ex;
+            padding: $Padding $Padding 0 $Padding;
             white-space: nowrap;
         }
 
         td {
-            padding: 1ex 1ex 0 0;
+            padding: $Padding $Padding 0 0;
+        }
 
-            &:nth-last-child(1) {
-                padding-bottom: 1ex;
+        tr:nth-last-child(1) {
+            td, th {
+                padding-bottom: $Padding
             }
         }
     }
@@ -92,7 +94,7 @@ table.form {
     tfoot {
         td, th {
             border-top: 1px dotted lighten($Green, 30);
-            padding: 1ex 1ex 1ex 0;
+            padding: $Padding $Padding $Padding 0;
         }
     }
 
@@ -104,8 +106,8 @@ table.form {
         border-radius: 3px;
         background-color: lighten($Orange, 40);
         color: $Orange;
-        padding: 1ex;
-        margin-bottom: 1ex;
+        padding: $Padding;
+        margin-bottom: $Padding;
 
         ul {
             margin: 0;

@@ -7,7 +7,6 @@
   <ItemGroup>
     <Folder Include="Pages\WebSites\" />
     <Folder Include="Pages\Users\" />
-    <Folder Include="wwwroot\Content\Styles\Fonts\" />
   </ItemGroup>
 
   <ItemGroup>

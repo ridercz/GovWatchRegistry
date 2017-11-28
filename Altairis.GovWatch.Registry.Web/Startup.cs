@@ -88,7 +88,11 @@ namespace Altairis.GovWatch.Registry.Web {
                 return next();
             });
             app.UseMvc();
-            app.UseStaticFiles();
+            app.UseStaticFiles(new StaticFileOptions {
+                OnPrepareResponse = context => {
+                    context.Context.Response.Headers.Add("Cache-Control", "public,max-age=31536000");
+                }
+            });
         }
 
     }
