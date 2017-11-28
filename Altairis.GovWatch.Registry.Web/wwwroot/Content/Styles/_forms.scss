@@ -1,5 +1,35 @@
 ﻿@import "_vars.scss";
 
+@mixin button {
+    display:inline-block;
+    text-align:center;
+    font-family: $FontSans;
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px solid $Green;
+    background-color: $Green;
+    color: $TrueWhite;
+    padding: 1ex 3ex;
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer;
+
+    &:hover {
+        background-color: $Orange;
+        border: 1px solid $Orange;
+    }
+
+    &.secondary {
+        background-color: $White;
+        color: $Green;
+
+        &:hover {
+            color: $Orange;
+        }
+    }
+}
+
+
 form {
     input {
         box-sizing: border-box;
@@ -19,17 +49,7 @@ form {
         }
 
         &[type=submit], &[type=button] {
-            border: none;
-            background-color: $Green;
-            color: $TrueWhite;
-            padding: 1ex 3ex;
-            font-weight: bold;
-            min-width: 20ex;
-            border-radius: 3px;
-
-            &:hover {
-                background-color: $Orange;
-            }
+            @include button;
         }
 
         &[type=checkbox] {
@@ -38,6 +58,10 @@ form {
             vertical-align: text-bottom;
         }
     }
+}
+
+a.button {
+    @include button;
 }
 
 table.form {

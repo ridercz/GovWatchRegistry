@@ -437,19 +437,52 @@ form input {
     form input[type=text]:focus, form input[type=password]:focus, form input textarea:focus {
       border: 1px solid #439539; }
   form input[type=submit], form input[type=button] {
-    border: none;
+    display: inline-block;
+    text-align: center;
+    font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;
+    border: 1px solid #439539;
     background-color: #439539;
     color: #fff;
     padding: 1ex 3ex;
-    font-weight: bold;
-    min-width: 20ex;
-    border-radius: 3px; }
+    border-radius: 3px;
+    text-decoration: none;
+    cursor: pointer; }
     form input[type=submit]:hover, form input[type=button]:hover {
-      background-color: #f26631; }
+      background-color: #f26631;
+      border: 1px solid #f26631; }
+    form input[type=submit].secondary, form input[type=button].secondary {
+      background-color: #eee;
+      color: #439539; }
+      form input[type=submit].secondary:hover, form input[type=button].secondary:hover {
+        color: #f26631; }
   form input[type=checkbox] {
     width: 20px;
     height: 20px;
     vertical-align: text-bottom; }
+
+a.button {
+  display: inline-block;
+  text-align: center;
+  font-family: "IBM Plex Sans", Arial, Helvetica, sans-serif;
+  font-size: 15px;
+  font-weight: bold;
+  border: 1px solid #439539;
+  background-color: #439539;
+  color: #fff;
+  padding: 1ex 3ex;
+  border-radius: 3px;
+  text-decoration: none;
+  cursor: pointer; }
+  a.button:hover {
+    background-color: #f26631;
+    border: 1px solid #f26631; }
+  a.button.secondary {
+    background-color: #eee;
+    color: #439539; }
+    a.button.secondary:hover {
+      color: #f26631; }
 
 table.form {
   background-color: #fff;
