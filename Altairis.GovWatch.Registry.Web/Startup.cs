@@ -13,6 +13,8 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Altairis.ConventionalMetadataProviders;
+using System.Globalization;
 
 namespace Altairis.GovWatch.Registry.Web {
     public class Startup {
@@ -61,7 +63,9 @@ namespace Altairis.GovWatch.Registry.Web {
             });
 
             // Configure system services
-            services.AddMvc().AddRazorPagesOptions(options => {
+            services.AddMvc(options => {
+                options.SetConventionalMetadataProviders(typeof(Resources.ModelMetadata));
+            }).AddRazorPagesOptions(options => {
                 options.Conventions.AuthorizeFolder("/My", "IsLoggedIn");
                 options.Conventions.AuthorizeFolder("/WebSites", "IsOperator");
                 options.Conventions.AuthorizeFolder("/Users", "IsAdministrator");
@@ -78,6 +82,11 @@ namespace Altairis.GovWatch.Registry.Web {
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
+            app.Use((context, next) => {
+                CultureInfo.CurrentCulture = new CultureInfo("cs-CZ");
+                CultureInfo.CurrentUICulture = new CultureInfo("cs-CZ");
+                return next();
+            });
             app.UseMvc();
             app.UseStaticFiles();
         }

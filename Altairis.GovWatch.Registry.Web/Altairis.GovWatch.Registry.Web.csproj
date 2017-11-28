@@ -11,12 +11,28 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="Altairis.ConventionalMetadataProviders" Version="1.0.0-pre01" />
     <PackageReference Include="Altairis.Services.Mailing.Rfc2822" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
   </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Altairis.GovWatch.Registry.Data\Altairis.GovWatch.Registry.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Resources\ModelMetadata.Designer.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>ModelMetadata.resx</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Update="Resources\ModelMetadata.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>ModelMetadata.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
