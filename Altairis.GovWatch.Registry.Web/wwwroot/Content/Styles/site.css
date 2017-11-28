@@ -111,6 +111,15 @@ html {
       margin: 3ex 0;
       padding: 1ex 0 0 0; }
 
+a:link {
+  color: #f26631; }
+
+a:visited {
+  color: #333; }
+
+a:hover {
+  color: #439539; }
+
 h1 {
   font-family: "ibm_plex_serif", Cambria, serif;
   font-weight: 300;

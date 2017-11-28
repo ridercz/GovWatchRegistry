@@ -22,6 +22,20 @@ html {
     }
 }
 
+a {
+    &:link {
+        color: $Orange;
+    }
+
+    &:visited {
+        color: $Black;
+    }
+
+    &:hover {
+        color: $Green;
+    }
+}
+
 h1 {
     font-family: $FontSerif;
     font-weight: 300;
