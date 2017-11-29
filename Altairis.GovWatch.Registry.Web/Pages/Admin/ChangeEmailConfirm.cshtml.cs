@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Identity;
 using Altairis.GovWatch.Registry.Data;
 
-namespace Altairis.GovWatch.Registry.Web.Pages.My {
+namespace Altairis.GovWatch.Registry.Web.Pages.Admin {
 public class ChangeEmailConfirmModel : PageModel {
     private readonly UserManager<ApplicationUser> _userManager;
 

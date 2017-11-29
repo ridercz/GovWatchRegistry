@@ -66,9 +66,9 @@ namespace Altairis.GovWatch.Registry.Web {
             services.AddMvc(options => {
                 options.SetConventionalMetadataProviders(typeof(Resources.ModelMetadata));
             }).AddRazorPagesOptions(options => {
-                options.Conventions.AuthorizeFolder("/My", "IsLoggedIn");
-                options.Conventions.AuthorizeFolder("/WebSites", "IsOperator");
-                options.Conventions.AuthorizeFolder("/Users", "IsAdministrator");
+                options.Conventions.AuthorizeFolder("/Admin", "IsLoggedIn");
+                options.Conventions.AuthorizeFolder("/Admin/Sites", "IsOperator");
+                options.Conventions.AuthorizeFolder("/Admin/Users", "IsAdministrator");
             });
             services.AddDbContext<RegistryDbContext>(options => {
                 options.UseSqlServer(this.Configuration.GetConnectionString("RegistryDb"));

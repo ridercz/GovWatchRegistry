@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Altairis.GovWatch.Registry.Web.Pages.My
+namespace Altairis.GovWatch.Registry.Web.Pages.Admin
 {
     public class IndexModel : PageModel
     {

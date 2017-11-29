@@ -5,8 +5,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Pages\WebSites\" />
-    <Folder Include="Pages\Users\" />
+    <Folder Include="Pages\Admin\Sites\" />
+    <Folder Include="Pages\Admin\Users\" />
   </ItemGroup>
 
   <ItemGroup>

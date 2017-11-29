@@ -10,7 +10,7 @@ using System.ComponentModel.DataAnnotations;
 using Altairis.Services.Mailing;
 using System.Net;
 
-namespace Altairis.GovWatch.Registry.Web.Pages.My {
+namespace Altairis.GovWatch.Registry.Web.Pages.Admin {
     public class ChangeEmailModel : PageModel {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMailerService _mailerService;

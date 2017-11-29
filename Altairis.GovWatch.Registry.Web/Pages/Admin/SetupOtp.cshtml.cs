@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.Text.RegularExpressions;
 
-namespace Altairis.GovWatch.Registry.Web.Pages.My {
+namespace Altairis.GovWatch.Registry.Web.Pages.Admin {
     public class SetupOtpModel : PageModel {
         private readonly UserManager<ApplicationUser> _userManager;
 
