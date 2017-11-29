@@ -79,22 +79,26 @@ namespace Altairis.GovWatch.Registry.Web {
             this.ConfigureDatabase(dc, userManager, roleManager).Wait();
 
             // Configure middleware
+            app.UseRequestLocalization(new RequestLocalizationOptions {
+                SupportedCultures = { new CultureInfo("cs-CZ") },
+                SupportedUICultures = { new CultureInfo("cs-CZ") }
+            });
             if (env.IsDevelopment()) {
+                // Development
                 app.UseDeveloperExceptionPage();
                 app.UseDatabaseErrorPage();
+                app.UseStaticFiles();
             }
-            app.Use((context, next) => {
-                CultureInfo.CurrentCulture = new CultureInfo("cs-CZ");
-                CultureInfo.CurrentUICulture = new CultureInfo("cs-CZ");
-                return next();
-            });
+            else {
+                // Production
+                app.UseStaticFiles(new StaticFileOptions {
+                    OnPrepareResponse = context => {
+                        context.Context.Response.Headers.Add("Cache-Control", "public,max-age=31536000");
+                    }
+                });
+            }
             app.UseAuthentication();
             app.UseMvc();
-            app.UseStaticFiles(new StaticFileOptions {
-                OnPrepareResponse = context => {
-                    context.Context.Response.Headers.Add("Cache-Control", "public,max-age=31536000");
-                }
-            });
         }
 
         public async Task ConfigureDatabase(RegistryDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {
