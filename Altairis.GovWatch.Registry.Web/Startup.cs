@@ -29,13 +29,18 @@ namespace Altairis.GovWatch.Registry.Web {
             this.Configuration.Bind(appSettings);
             services.Configure<AppSettings>(this.Configuration);
 
-            // Configure mailing
-            services.AddPickupFolderMailerService(new PickupFolderMailerServiceOptions {
-                PickupFolderName = appSettings.Mailing.PickupFolder,
-                DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName)
+            // Configure database
+            services.AddDbContext<RegistryDbContext>(options => {
+                options.UseSqlServer(this.Configuration.GetConnectionString("RegistryDb"));
             });
 
             // Configure identity
+            services.AddAuthorization(options => {
+                options.AddPolicy("IsLoggedIn", policy => policy.RequireAuthenticatedUser());
+                options.AddPolicy("IsAdministrator", policy => policy.RequireRole(ApplicationRole.AdministratorRoleName));
+                options.AddPolicy("IsOperator", policy => policy.RequireRole(ApplicationRole.OperatorRoleName, ApplicationRole.AdministratorRoleName));
+                options.AddPolicy("IsMonitor", policy => policy.RequireRole(ApplicationRole.MonitorRoleName));
+            });
             services.AddIdentity<ApplicationUser, ApplicationRole>(options => {
                 options.Password.RequiredLength = 12;
                 options.Password.RequiredUniqueChars = 4;
@@ -51,14 +56,8 @@ namespace Altairis.GovWatch.Registry.Web {
                 options.SlidingExpiration = true;
                 options.ExpireTimeSpan = TimeSpan.FromDays(30);
             });
-            services.AddAuthorization(options => {
-                options.AddPolicy("IsLoggedIn", policy => policy.RequireAuthenticatedUser());
-                options.AddPolicy("IsAdministrator", policy => policy.RequireRole(ApplicationRole.AdministratorRoleName));
-                options.AddPolicy("IsOperator", policy => policy.RequireRole(ApplicationRole.OperatorRoleName));
-                options.AddPolicy("IsMonitor", policy => policy.RequireRole(ApplicationRole.MonitorRoleName));
-            });
 
-            // Configure system services
+            // Configure MVC
             services.AddMvc(options => {
                 options.SetConventionalMetadataProviders(typeof(Resources.ModelMetadata));
             }).AddRazorPagesOptions(options => {
@@ -66,12 +65,13 @@ namespace Altairis.GovWatch.Registry.Web {
                 options.Conventions.AuthorizeFolder("/Admin/Sites", "IsOperator");
                 options.Conventions.AuthorizeFolder("/Admin/Users", "IsAdministrator");
             });
-            services.AddDbContext<RegistryDbContext>(options => {
-                options.UseSqlServer(this.Configuration.GetConnectionString("RegistryDb"));
-            });
 
             // Configure other services
             services.AddSingleton<IDateProvider>(new DefaultDateProvider());
+            services.AddPickupFolderMailerService(new PickupFolderMailerServiceOptions {
+                PickupFolderName = appSettings.Mailing.PickupFolder,
+                DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName)
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, RegistryDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {
@@ -81,12 +81,14 @@ namespace Altairis.GovWatch.Registry.Web {
             // Configure middleware
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
+                app.UseDatabaseErrorPage();
             }
             app.Use((context, next) => {
                 CultureInfo.CurrentCulture = new CultureInfo("cs-CZ");
                 CultureInfo.CurrentUICulture = new CultureInfo("cs-CZ");
                 return next();
             });
+            app.UseAuthentication();
             app.UseMvc();
             app.UseStaticFiles(new StaticFileOptions {
                 OnPrepareResponse = context => {
@@ -94,7 +96,7 @@ namespace Altairis.GovWatch.Registry.Web {
                 }
             });
         }
-        
+
         public async Task ConfigureDatabase(RegistryDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {
             // Migrate database to latest version
             await dc.Database.MigrateAsync();
@@ -106,18 +108,21 @@ namespace Altairis.GovWatch.Registry.Web {
                 throw new Exception("Identity operation failed: " + errors);
             }
 
-            if (!userManager.Users.Any()) {
-                var user = new ApplicationUser { UserName = "administrator", DisplayName = "Správce systému" };
-                EnsureIdentitySuccess(await userManager.CreateAsync(user, "password"));
-            }
-
-            async void EnsureRoleCreated(string roleName) {
+            // Create roles
+            async Task EnsureRoleCreated(string roleName) {
                 if (await roleManager.FindByNameAsync(roleName) != null) return;
                 EnsureIdentitySuccess(await roleManager.CreateAsync(new ApplicationRole { Name = roleName }));
             }
-            EnsureRoleCreated(ApplicationRole.AdministratorRoleName);
-            EnsureRoleCreated(ApplicationRole.OperatorRoleName);
-            EnsureRoleCreated(ApplicationRole.MonitorRoleName);
+            await EnsureRoleCreated(ApplicationRole.AdministratorRoleName);
+            await EnsureRoleCreated(ApplicationRole.OperatorRoleName);
+            await EnsureRoleCreated(ApplicationRole.MonitorRoleName);
+
+            // Create admin user
+            if (!userManager.Users.Any()) {
+                var user = new ApplicationUser { UserName = "administrator", DisplayName = "Správce systému" };
+                EnsureIdentitySuccess(await userManager.CreateAsync(user, "pass.word123"));
+                EnsureIdentitySuccess(await userManager.AddToRoleAsync(user, ApplicationRole.AdministratorRoleName));
+            }
         }
 
     }
