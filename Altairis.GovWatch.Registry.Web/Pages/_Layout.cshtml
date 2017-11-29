@@ -23,6 +23,11 @@
     <footer>
         Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, @DateTime.Today.Year - built using ASP.NET Core
     </footer>
+    <script src="~/Content/Scripts/validation.min.js" asp-append-version="true"></script>
+    <script>
+        var v = new aspnetValidation.ValidationService();
+        v.bootstrap();
+    </script>
     @RenderSection("Scripts", required: false)
 </body>
 </html>
