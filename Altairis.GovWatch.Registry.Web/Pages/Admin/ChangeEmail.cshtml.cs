@@ -1,14 +1,11 @@
 using System;
-using System.Collections.Generic;
-using System.Linq;
+using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
+using Altairis.GovWatch.Registry.Data;
+using Altairis.Services.Mailing;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Identity;
-using Altairis.GovWatch.Registry.Data;
-using System.ComponentModel.DataAnnotations;
-using Altairis.Services.Mailing;
-using System.Net;
 
 namespace Altairis.GovWatch.Registry.Web.Pages.Admin {
     public class ChangeEmailModel : PageModel {

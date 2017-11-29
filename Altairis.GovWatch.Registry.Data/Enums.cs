@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Altairis.GovWatch.Registry.Data {
+﻿namespace Altairis.GovWatch.Registry.Data {
 
     public enum WebSiteStatus {
         Inactive = 0,

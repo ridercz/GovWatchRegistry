@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Altairis.GovWatch.Registry.Web {
+﻿namespace Altairis.GovWatch.Registry.Web {
     public class AppSettings {
         public MailingConfig Mailing { get; set; }
 
