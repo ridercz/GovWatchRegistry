@@ -10,7 +10,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Altairis.ConventionalMetadataProviders" Version="1.0.0-pre01" />
+    <PackageReference Include="Altairis.ConventionalMetadataProviders" Version="1.0.0-pre02" />
     <PackageReference Include="Altairis.Services.Mailing.Rfc2822" Version="1.0.1" />
     <PackageReference Include="Microsoft.AspNetCore.All" Version="2.0.3" />
   </ItemGroup>
