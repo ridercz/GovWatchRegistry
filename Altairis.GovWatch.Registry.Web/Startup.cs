@@ -1,20 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Threading.Tasks;
+using Altairis.ConventionalMetadataProviders;
 using Altairis.GovWatch.Registry.Data;
 using Altairis.GovWatch.Registry.Web.Services;
 using Altairis.Services.Mailing;
 using Altairis.Services.Mailing.Rfc2822;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Altairis.ConventionalMetadataProviders;
-using System.Globalization;
 
 namespace Altairis.GovWatch.Registry.Web {
     public class Startup {
@@ -45,9 +43,7 @@ namespace Altairis.GovWatch.Registry.Web {
                 options.Password.RequireLowercase = false;
                 options.Password.RequireNonAlphanumeric = false;
                 options.Password.RequireUppercase = false;
-            })
-                .AddEntityFrameworkStores<RegistryDbContext>()
-                .AddDefaultTokenProviders();
+            }).AddEntityFrameworkStores<RegistryDbContext>().AddDefaultTokenProviders();
             services.ConfigureApplicationCookie(options => {
                 options.LoginPath = "/Account/Login";
                 options.LogoutPath = "/Account/Logout";
@@ -78,7 +74,11 @@ namespace Altairis.GovWatch.Registry.Web {
             services.AddSingleton<IDateProvider>(new DefaultDateProvider());
         }
 
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env) {
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env, RegistryDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {
+            // Configure database
+            this.ConfigureDatabase(dc, userManager, roleManager).Wait();
+
+            // Configure middleware
             if (env.IsDevelopment()) {
                 app.UseDeveloperExceptionPage();
             }
@@ -93,6 +93,31 @@ namespace Altairis.GovWatch.Registry.Web {
                     context.Context.Response.Headers.Add("Cache-Control", "public,max-age=31536000");
                 }
             });
+        }
+        
+        public async Task ConfigureDatabase(RegistryDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {
+            // Migrate database to latest version
+            await dc.Database.MigrateAsync();
+
+            // Configure identity
+            void EnsureIdentitySuccess(IdentityResult result) {
+                if (result == IdentityResult.Success) return;
+                var errors = string.Join(", ", result.Errors.Select(x => x.Description));
+                throw new Exception("Identity operation failed: " + errors);
+            }
+
+            if (!userManager.Users.Any()) {
+                var user = new ApplicationUser { UserName = "administrator", DisplayName = "Správce systému" };
+                EnsureIdentitySuccess(await userManager.CreateAsync(user, "password"));
+            }
+
+            async void EnsureRoleCreated(string roleName) {
+                if (await roleManager.FindByNameAsync(roleName) != null) return;
+                EnsureIdentitySuccess(await roleManager.CreateAsync(new ApplicationRole { Name = roleName }));
+            }
+            EnsureRoleCreated(ApplicationRole.AdministratorRoleName);
+            EnsureRoleCreated(ApplicationRole.OperatorRoleName);
+            EnsureRoleCreated(ApplicationRole.MonitorRoleName);
         }
 
     }
