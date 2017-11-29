@@ -11,7 +11,7 @@ using System;
 namespace Altairis.GovWatch.Registry.Data.Migrations
 {
     [DbContext(typeof(RegistryDbContext))]
-    [Migration("20171126232812_InitialCreate")]
+    [Migration("20171129160547_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -261,12 +261,12 @@ namespace Altairis.GovWatch.Registry.Data.Migrations
                     b.HasOne("Altairis.GovWatch.Registry.Data.ApplicationUser", "CreatedBy")
                         .WithMany()
                         .HasForeignKey("CreatedById")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("Altairis.GovWatch.Registry.Data.ApplicationUser", "UpdatedBy")
                         .WithMany()
                         .HasForeignKey("UpdatedById")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .OnDelete(DeleteBehavior.Restrict);
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<int>", b =>
