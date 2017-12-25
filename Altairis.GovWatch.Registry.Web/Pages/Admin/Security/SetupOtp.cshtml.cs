@@ -52,8 +52,8 @@ namespace Altairis.GovWatch.Registry.Web.Pages.Admin.Security {
             }
             var secret = await this._userManager.GetAuthenticatorKeyAsync(user);
 
-            this.FormattedSecret = OtpHelper.FormatSecret(secret);
-            this.OtpUri = OtpHelper.GenerateUri("ShirtShop", user.UserName, secret);
+            this.FormattedSecret = SecurityHelper.FormatOtpSecret(secret);
+            this.OtpUri = SecurityHelper.GenerateOtpUri("ShirtShop", user.UserName, secret);
         }
 
         public async Task OnGetAsync() {

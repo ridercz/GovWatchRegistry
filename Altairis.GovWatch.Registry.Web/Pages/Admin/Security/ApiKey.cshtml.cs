@@ -29,12 +29,8 @@ namespace Altairis.GovWatch.Registry.Web.Pages.Admin.Security {
         private async Task<string> GetKey(bool reset) {
             var currentUser = await _userManager.GetUserAsync(this.User);
             if (reset || string.IsNullOrWhiteSpace(currentUser.ApiKey)) {
-                using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create()) {
-                    var keyBytes = new byte[48];
-                    rng.GetBytes(keyBytes);
-                    currentUser.ApiKey = Convert.ToBase64String(keyBytes).Replace('+', '-').Replace('/', '_');
-                    await _userManager.UpdateAsync(currentUser);
-                }
+                currentUser.ApiKey = SecurityHelper.GenerateRandomPassword(64);
+                await _userManager.UpdateAsync(currentUser);
             }
             return currentUser.ApiKey;
         }
