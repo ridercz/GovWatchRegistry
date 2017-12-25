@@ -15,11 +15,11 @@ namespace Altairis.GovWatch.Registry.Web.Pages.Admin.Users {
             this._userManager = userManager;
         }
 
-        public IEnumerable<ApplicationUser> Users { get; set; }
+        public IEnumerable<ApplicationUser> Data { get; set; }
 
 
         public async Task OnGet() {
-            this.Users = _userManager.Users.OrderBy(x => x.UserName);
+            this.Data = _userManager.Users.OrderBy(x => x.UserName);
         }
     }
 }

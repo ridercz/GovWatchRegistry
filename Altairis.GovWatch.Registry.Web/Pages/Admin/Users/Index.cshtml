@@ -14,7 +14,7 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in this.Model.Users) {
+        @foreach (var item in this.Model.Data) {
             <tr>
                 <th class="code"><a asp-page="Edit" asp-route-userId="@item.Id"><i class="fal fa-user"></i> @item.UserName</a></th>
                 <td>@item.DisplayName</td>
