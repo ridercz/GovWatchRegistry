@@ -4,7 +4,7 @@
     this.ViewBag.Title = "Vypnutí dvoufaktorové autentizace";
     <h2>@this.ViewBag.Title</h2>
     <form method="post">
-        <p>Dvoufaktorová autentizace je nyní <b>zapnutá</b>. Pokud ji chcete vypnout, musíte zadat heslo.</p>
+        <p><i class="fal fa-lock-closed-alt"></i> Dvoufaktorová autentizace je nyní <b>zapnutá</b>. Pokud ji chcete vypnout, musíte zadat heslo.</p>
         <table class="form">
             <tbody>
                 <tr>
@@ -18,6 +18,7 @@
                     <td>
                         <div asp-validation-summary="All"></div>
                         <input type="submit" value="Vypnout 2FA" />
+                        <a asp-page="Index" class="button secondary">Storno</a>
                     </td>
                 </tr>
             </tfoot>
@@ -28,7 +29,7 @@ else if (this.Model.CurrentOtpStatus == SetupOtpModel.OtpStatus.Disabled) {
     this.ViewBag.Title = "Zapnutí dvoufaktorové autentizace";
     <h2>@this.ViewBag.Title</h2>
     <form method="post">
-        <p>Dvoufaktorová autentizace je nyní <b>vypnutá</b>.</p>
+        <p><i class="fal fa-lock-open-alt"></i> Dvoufaktorová autentizace je nyní <b>vypnutá</b>.</p>
         <div id="otpuri" data-qr-content="@Model.OtpUri"></div>
         <ol>
             <li>
@@ -62,6 +63,7 @@ else if (this.Model.CurrentOtpStatus == SetupOtpModel.OtpStatus.Disabled) {
                     <td>
                         <div asp-validation-summary="All"></div>
                         <input type="submit" value="Zapnout 2FA" />
+                        <a asp-page="Index" class="button secondary">Storno</a>
                     </td>
                 </tr>
             </tfoot>
@@ -69,7 +71,7 @@ else if (this.Model.CurrentOtpStatus == SetupOtpModel.OtpStatus.Disabled) {
     </form>
 }
 else if (this.Model.CurrentOtpStatus == SetupOtpModel.OtpStatus.Setup) {
-    <p>Právě jste zapnuli dvoufaktorovou autentizaci.</p>
+    <p><i class="fal fa-lock-closed-alt"></i> Právě jste zapnuli dvoufaktorovou autentizaci.</p>
     <p>
         Pro případ, že byste v budoucnu ztratili zařízení, které generuje autentizační
         kódy, vygenerovali jsme pro vás speciální jednorázové záchranné kódy, které
