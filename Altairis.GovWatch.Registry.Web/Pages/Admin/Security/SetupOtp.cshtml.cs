@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Altairis.GovWatch.Registry.Web.Pages.Admin {
+namespace Altairis.GovWatch.Registry.Web.Pages.Admin.Security {
     public class SetupOtpModel : PageModel {
         private readonly UserManager<ApplicationUser> _userManager;
 

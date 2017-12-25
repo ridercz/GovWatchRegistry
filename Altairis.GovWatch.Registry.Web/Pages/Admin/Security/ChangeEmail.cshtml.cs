@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace Altairis.GovWatch.Registry.Web.Pages.Admin {
+namespace Altairis.GovWatch.Registry.Web.Pages.Admin.Security {
     public class ChangeEmailModel : PageModel {
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly IMailerService _mailerService;
@@ -53,7 +53,7 @@ namespace Altairis.GovWatch.Registry.Web.Pages.Admin {
             var token = await this._userManager.GenerateChangeEmailTokenAsync(user, this.Input.NewEmail);
 
             // Get email change confirmation URL
-            var url = this.Url.Page("/Account/Manage/ChangeEmailConfirm",
+            var url = this.Url.Page("ChangeEmailConfirm",
                 pageHandler: null,
                 values: new {
                     newEmail = this.Input.NewEmail,
