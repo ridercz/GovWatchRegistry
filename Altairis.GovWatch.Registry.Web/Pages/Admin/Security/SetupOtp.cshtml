@@ -30,7 +30,7 @@ else if (this.Model.CurrentOtpStatus == SetupOtpModel.OtpStatus.Disabled) {
     <h2>@this.ViewBag.Title</h2>
     <form method="post">
         <p><i class="fal fa-lock-open-alt"></i> Dvoufaktorová autentizace je nyní <b>vypnutá</b>.</p>
-        <div id="otpuri" data-qr-content="@Model.OtpUri"></div>
+        <div id="otpuri" data-qr-content="@Model.OtpUri" style="text-align:center"></div>
         <ol>
             <li>
                 Stáhněte si aplikaci pro generování autentizačních kódů,
