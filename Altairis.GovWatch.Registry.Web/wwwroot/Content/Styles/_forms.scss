@@ -13,6 +13,8 @@
     border-radius: 3px;
     text-decoration: none;
     cursor: pointer;
+    line-height: 100%;
+
 
     &:hover {
         background-color: $Orange;
@@ -34,7 +36,7 @@ form {
     input {
         box-sizing: border-box;
 
-        &[type=text], &[type=password], textarea {
+        &[type=text], &[type=password], &[type=email], &[type=url], textarea, .textbox {
             font-family: $FontMono;
             font-size: 15px;
             padding: $Padding;

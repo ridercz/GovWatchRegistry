@@ -102,6 +102,30 @@ html {
   html body {
     max-width: 1000px;
     margin: 0 auto; }
+    html body > nav {
+      background-color: #333;
+      color: #eee;
+      padding: 10px; }
+      html body > nav .userinfo {
+        float: right; }
+      html body > nav ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0; }
+        html body > nav ul li {
+          margin: 0 10px 0 0;
+          padding: 0;
+          display: inline; }
+      html body > nav a {
+        text-decoration: none; }
+        html body > nav a:link {
+          color: #eee; }
+        html body > nav a:visited {
+          color: #eee; }
+        html body > nav a:hover {
+          color: #439539; }
+    html body > main {
+      line-height: 160%; }
     html body > footer {
       font-family: "ibm_plex_serif", Cambria, serif;
       font-size: 12px;
@@ -139,7 +163,7 @@ h2 {
 
 form input {
   box-sizing: border-box; }
-  form input[type=text], form input[type=password], form input textarea {
+  form input[type=text], form input[type=password], form input[type=email], form input[type=url], form input textarea, form input .textbox {
     font-family: "ibm_plex_mono", Consolas, "Courier New", Courier, Monospace;
     font-size: 15px;
     padding: 10px;
@@ -147,7 +171,7 @@ form input {
     background-color: #def1dc;
     border: none;
     border-radius: 3px; }
-    form input[type=text]:focus, form input[type=password]:focus, form input textarea:focus {
+    form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input textarea:focus, form input .textbox:focus {
       border: 1px solid #439539; }
   form input[type=submit], form input[type=button] {
     display: inline-block;
@@ -161,7 +185,8 @@ form input {
     padding: 10px 3ex;
     border-radius: 3px;
     text-decoration: none;
-    cursor: pointer; }
+    cursor: pointer;
+    line-height: 100%; }
     form input[type=submit]:hover, form input[type=button]:hover {
       background-color: #f26631;
       border: 1px solid #f26631; }
@@ -187,7 +212,8 @@ a.button {
   padding: 10px 3ex;
   border-radius: 3px;
   text-decoration: none;
-  cursor: pointer; }
+  cursor: pointer;
+  line-height: 100%; }
   a.button:hover {
     background-color: #f26631;
     border: 1px solid #f26631; }

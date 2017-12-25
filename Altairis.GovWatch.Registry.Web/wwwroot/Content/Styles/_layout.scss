@@ -10,6 +10,48 @@ html {
         max-width: 1000px;
         margin: 0 auto;
 
+        > nav {
+            background-color: $Black;
+            color: $White;
+            padding: $Padding;
+
+            .userinfo {
+                float: right;
+            }
+
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+
+                li {
+                    margin: 0 $Padding 0 0;
+                    padding: 0;
+                    display: inline;
+                }
+            }
+
+            a {
+                text-decoration: none;
+
+                &:link {
+                    color: $White;
+                }
+
+                &:visited {
+                    color: $White;
+                }
+
+                &:hover {
+                    color: $Green;
+                }
+            }
+        }
+
+        > main {
+            line-height: 160%;
+        }
+
         > footer {
             font-family: $FontSerif;
             font-size: 12px;
