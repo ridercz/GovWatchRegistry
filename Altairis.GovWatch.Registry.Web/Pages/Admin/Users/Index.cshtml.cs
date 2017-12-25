@@ -18,7 +18,7 @@ namespace Altairis.GovWatch.Registry.Web.Pages.Admin.Users {
         public IEnumerable<ApplicationUser> Data { get; set; }
 
 
-        public async Task OnGet() {
+        public void OnGet() {
             this.Data = _userManager.Users.OrderBy(x => x.UserName);
         }
     }
