@@ -164,6 +164,20 @@ h2 {
 code, .code {
   font-family: "ibm_plex_mono", Consolas, "Courier New", Courier, Monospace; }
 
+ul.tasklist {
+  margin: 0;
+  padding: 0;
+  list-style-type: none; }
+  ul.tasklist li {
+    border-radius: 3px;
+    background-color: #fff;
+    margin: 10px 0;
+    padding: 10px;
+    display: block; }
+    ul.tasklist li i.far {
+      color: #439539;
+      margin-right: 5px; }
+
 form input {
   box-sizing: border-box; }
   form input[type=text], form input[type=password], form input[type=email], form input[type=url], form input textarea, form input .textbox {

@@ -100,3 +100,22 @@ h2 {
 code, .code {
     font-family: $FontMono;
 }
+
+ul.tasklist {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+
+    li {
+        @include rounded;
+        background-color: $TrueWhite;
+        margin: $Padding 0;
+        padding: $Padding;
+        display: block;
+
+        i.far {
+            color: $Green;
+            margin-right: $Padding / 2;
+        }
+    }
+}
