@@ -1,0 +1,28 @@
+﻿@import "_vars.scss";
+
+ul.toolbar {
+    margin: $Padding 0;
+    padding: $Padding;
+    list-style-type: none;
+    background-color: rgba($Orange, .5);
+    font-size: 125%;
+    @include rounded;
+
+    li {
+        margin: 0;
+        padding: 0;
+        display: inline;
+    }
+
+    a {
+        text-decoration: none;
+
+        &:link, &:visited {
+            color: $Black;
+        }
+
+        &:hover {
+            color: $White;
+        }
+    }
+}
