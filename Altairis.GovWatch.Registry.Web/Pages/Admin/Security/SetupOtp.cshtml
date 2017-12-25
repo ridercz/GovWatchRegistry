@@ -86,7 +86,7 @@ else if (this.Model.CurrentOtpStatus == SetupOtpModel.OtpStatus.Setup) {
     </ul>
 }
 @section Scripts {
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.3.1/qrcode.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.3.1/qrcode.min.js" integrity="sha384-DL1cJwDGJTj2Ma4EpR2HRM73E5QhLlZXgQl2cjn3B5eo5LSFsD8OxN9byB4+sDti" crossorigin="anonymous"></script>
     <script type="text/javascript">
         var qre = document.getElementById('otpuri');
         var qrg = qrcode(0, 'L');
