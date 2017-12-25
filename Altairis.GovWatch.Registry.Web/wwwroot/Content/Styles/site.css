@@ -170,7 +170,10 @@ form input {
     padding: 10px;
     width: 100%;
     background-color: #def1dc;
-    border: none; }
+    border: 1px solid #def1dc; }
+    form input[type=text].input-validation-error, form input[type=password].input-validation-error, form input[type=email].input-validation-error, form input[type=url].input-validation-error, form input textarea.input-validation-error, form input .textbox.input-validation-error {
+      background-color: #fde3d9;
+      border: 1px solid #f26631; }
     form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input textarea:focus, form input .textbox:focus {
       border: 1px solid #439539; }
   form input[type=submit], form input[type=button] {
@@ -199,6 +202,21 @@ form input {
     width: 20px;
     height: 20px;
     vertical-align: text-bottom; }
+
+form select {
+  box-sizing: border-box;
+  border-radius: 3.33333px;
+  font-family: "ibm_plex_mono", Consolas, "Courier New", Courier, Monospace;
+  font-size: 15px;
+  padding: 10px;
+  width: 100%;
+  background-color: #def1dc;
+  border: 1px solid #def1dc; }
+  form select.input-validation-error {
+    background-color: #fde3d9;
+    border: 1px solid #f26631; }
+  form select:focus {
+    border: 1px solid #439539; }
 
 a.button {
   border-radius: 3.33333px;

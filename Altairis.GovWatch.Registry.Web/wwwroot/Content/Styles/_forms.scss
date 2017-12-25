@@ -31,23 +31,32 @@
     }
 }
 
+@mixin textbox {
+    @include rounded;
+    font-family: $FontMono;
+    font-size: 15px;
+    padding: $Padding;
+    width: 100%;
+    background-color: lighten($Green, 50);
+    border: 1px solid lighten($Green, 50);
+
+    &.input-validation-error {
+        background-color: lighten($Orange, 35);
+        border: 1px solid $Orange;
+    }
+
+    &:focus {
+        border: 1px solid $Green;
+    }
+}
+
 
 form {
     input {
         box-sizing: border-box;
 
         &[type=text], &[type=password], &[type=email], &[type=url], textarea, .textbox {
-            @include rounded;
-            font-family: $FontMono;
-            font-size: 15px;
-            padding: $Padding;
-            width: 100%;
-            background-color: lighten($Green, 50);
-            border: none;
-
-            &:focus {
-                border: 1px solid $Green;
-            }
+            @include textbox;
         }
 
         &[type=submit], &[type=button] {
@@ -59,6 +68,11 @@ form {
             height: 20px;
             vertical-align: text-bottom;
         }
+    }
+
+    select {
+        box-sizing: border-box;
+        @include textbox;
     }
 }
 
