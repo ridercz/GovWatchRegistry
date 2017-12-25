@@ -3,13 +3,14 @@
 <head>
     <meta name="viewport" content="width=device-width" />
     <title>@(string.IsNullOrEmpty(this.ViewBag.Title) ? "Registr státních webů" : this.ViewBag.Title + " | Registr státních webů")</title>
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha256-HxaKz5E/eBbvhGMNwhWRPrAR9i/lG1JeT4mD6hCQ7s4=" crossorigin="anonymous" />
-    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/7.0.0/normalize.min.css" integrity="sha384-7tIwW4quYS2+TZCwuAPnUY+dRqg28ylzlIoVXAwpfiTs+CMKsAOSsWYQ96c/ZnV+" crossorigin="anonymous">
     <environment include="Development">
         <link rel="stylesheet" type="text/css" href="~/Content/Styles/site.css" />
+        <link rel="stylesheet" type="text/css" href="~/Content/Styles/Awesome/css/fontawesome-all.css" />
     </environment>
     <environment exclude="Development">
         <link rel="stylesheet" type="text/css" href="~/Content/Styles/site.min.css" asp-append-version="true" />
+        <link rel="stylesheet" type="text/css" href="~/Content/Styles/Awesome/css/fontawesome-all.min.css" asp-append-version="true" />
     </environment>
     @RenderSection("Head", required: false)
 </head>
@@ -17,10 +18,11 @@
     <header>
         <h1>Registr státních webů</h1>
     </header>
+    <nav>
+        <vc:menu></vc:menu>
+    </nav>
     <main>
-        <div>
-            @RenderBody()
-        </div>
+        @RenderBody()
     </main>
     <footer>
         Copyright &copy; <a href="https://www.altairis.cz/">Altairis</a>, @DateTime.Today.Year - built using ASP.NET Core
