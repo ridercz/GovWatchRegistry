@@ -136,6 +136,9 @@
   <data name="DisplayName" xml:space="preserve">
     <value>Zobrazované jméno</value>
   </data>
+  <data name="Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
   <data name="Importance" xml:space="preserve">
     <value>Důležitost</value>
   </data>
@@ -182,6 +185,9 @@
   <data name="RememberMe" xml:space="preserve">
     <value>pamatuj si mě na tomto zařízení</value>
     <comment>Login infrastructure</comment>
+  </data>
+  <data name="RoleName" xml:space="preserve">
+    <value>Role</value>
   </data>
   <data name="Scope" xml:space="preserve">
     <value>Působnost</value>

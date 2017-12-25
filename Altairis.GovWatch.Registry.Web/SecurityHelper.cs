@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Net;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.RazorPages;
 
 namespace Altairis.GovWatch.Registry.Web {
     public static class SecurityHelper {
@@ -41,6 +43,15 @@ namespace Altairis.GovWatch.Registry.Web {
                 rng.GetBytes(passwordData);
                 return Convert.ToBase64String(passwordData).Replace('+', '-').Replace('/', '_');
             }
+        }
+
+        public static bool IsIdentitySuccess(this PageModel page, IdentityResult result) {
+            if (!result.Succeeded) {
+                foreach (var err in result.Errors) {
+                    page.ModelState.AddModelError(string.Empty, $"{err.Description} [{err.Code}]");
+                }
+            }
+            return result.Succeeded;
         }
 
     }

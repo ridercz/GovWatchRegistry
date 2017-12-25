@@ -6,7 +6,6 @@
 
   <ItemGroup>
     <Folder Include="Pages\Admin\Sites\" />
-    <Folder Include="Pages\Admin\Users\" />
   </ItemGroup>
 
   <ItemGroup>

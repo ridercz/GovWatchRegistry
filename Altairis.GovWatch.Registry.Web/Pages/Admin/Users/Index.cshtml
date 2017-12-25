@@ -1,0 +1,25 @@
+﻿@page
+@model IndexModel
+@{ this.ViewBag.Title = "Správa uživatelů"; }
+<h2>@this.ViewBag.Title</h2>
+<ul class="toolbar">
+    <li><a asp-page="Create" title="Nový uživatel"><i class="far fa-user-plus"></i></a></li>
+</ul>
+<table class="grid">
+    <thead>
+        <tr>
+            <th>Uživatelské jméno</th>
+            <th>Jméno</th>
+            <th>E-mail</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in this.Model.Users) {
+            <tr>
+                <th class="code"><a asp-page="Edit" asp-route-userId="@item.Id"><i class="fal fa-user"></i> @item.UserName</a></th>
+                <td>@item.DisplayName</td>
+                <td><a href="mailto:@item.Email">@item.Email</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
