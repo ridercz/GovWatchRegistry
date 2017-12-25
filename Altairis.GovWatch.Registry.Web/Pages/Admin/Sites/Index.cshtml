@@ -1,0 +1,39 @@
+﻿@page "{pageNumber:int:min(1)=1}"
+@model IndexModel
+@{ this.ViewBag.Title = "Seznam webů"; }
+<h2>@this.ViewBag.Title</h2>
+<ul class="toolbar">
+    <li><a asp-page="Create" title="Nový web"><i class="far fa-plus-circle"></i></a></li>
+</ul>
+<table class="grid">
+    <thead>
+        <tr>
+            <th>Název</th>
+            <td>URL</td>
+            <td></td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in this.Model.Data) {
+            <tr>
+                <th><a asp-page="Edit" asp-route-siteId="@item.Id"><i class="far fa-globe"></i> <span trim-length="50">@item.Name</span></a></th>
+                <td trim-length="50">@item.Url</td>
+                <td>
+                    @if (item.Url.StartsWith("https://", StringComparison.OrdinalIgnoreCase)) {
+                        <a href="@item.Url"><i class="fas fa-fw fa-lock-alt"></i></a>
+                    }
+                    else {
+                        <a href="@item.Url"><i class="far fa-fw fa-lock-open-alt"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+    <tfoot>
+        <tr>
+            <td colspan="3">
+                <vc:pager model="Model.Paging"></vc:pager>
+            </td>
+        </tr>
+    </tfoot>
+</table>

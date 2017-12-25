@@ -22,17 +22,22 @@ namespace Altairis.GovWatch.Registry.Web {
                 period);                                    // 5
         }
 
-        public static string FormatOtpSecret(string secret) {
+        public static string FormatSecret(string secret, string separator = "-", Func<string, string> formatter = null) {
+            if (secret == null) throw new ArgumentNullException(nameof(secret));
+            if (separator == null) throw new ArgumentNullException(nameof(separator));
+            if (string.IsNullOrEmpty(separator)) throw new ArgumentException("Value cannot be null or empty string.", nameof(separator));
+            if (formatter == null) formatter = s => s;
+
             var result = new StringBuilder();
 
             var currentPosition = 0;
             while (currentPosition + 4 < secret.Length) {
-                result.Append(secret.Substring(currentPosition, 4)).Append(" ");
+                result.Append(secret.Substring(currentPosition, 4)).Append(separator);
                 currentPosition += 4;
             }
             if (currentPosition < secret.Length) result.Append(secret.Substring(currentPosition));
 
-            return result.ToString().ToLowerInvariant();
+            return formatter(result.ToString());
         }
 
         public static string GenerateRandomPassword(int length = 20) {

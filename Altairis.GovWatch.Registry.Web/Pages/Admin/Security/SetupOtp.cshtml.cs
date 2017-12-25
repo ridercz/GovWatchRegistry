@@ -52,7 +52,7 @@ namespace Altairis.GovWatch.Registry.Web.Pages.Admin.Security {
             }
             var secret = await this._userManager.GetAuthenticatorKeyAsync(user);
 
-            this.FormattedSecret = SecurityHelper.FormatOtpSecret(secret);
+            this.FormattedSecret = SecurityHelper.FormatSecret(secret);
             this.OtpUri = SecurityHelper.GenerateOtpUri("ShirtShop", user.UserName, secret);
         }
 
