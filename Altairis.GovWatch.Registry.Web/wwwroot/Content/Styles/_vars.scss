@@ -8,8 +8,8 @@ $TrueWhite: #fff;
 $Orange: #f26631;
 $Green: #439539;
 $Padding: 10px;
-
+$Radius: 3px;
 
 @mixin rounded() {
-    border-radius: $Padding/3;
+    border-radius: $Radius;
 }

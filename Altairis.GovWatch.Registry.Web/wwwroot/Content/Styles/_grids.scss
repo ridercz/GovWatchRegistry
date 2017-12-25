@@ -1,0 +1,47 @@
+﻿@import "_vars.scss";
+
+table.grid {
+    border: none;
+    border-collapse: collapse;
+    width: 100%;
+    background-color: $TrueWhite;
+    @include rounded;
+
+    tr > *:nth-child(1) {
+        padding-left: $Padding;
+    }
+
+
+    th, td {
+        text-align: left;
+        padding: $Padding / 2;
+    }
+
+    thead {
+        border-bottom: 3px double $Green;
+    }
+
+    tbody {
+        tr {
+            border-bottom: 1px solid lighten($Green, 30);
+
+            &:nth-last-child(1) {
+                border-bottom: none;
+            }
+
+            &:hover {
+                background-color: lighten($Green, 50);
+            }
+        }
+
+        th {
+        }
+
+        td {
+        }
+    }
+
+    a {
+        text-decoration: none;
+    }
+}
