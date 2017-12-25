@@ -1,0 +1,27 @@
+﻿@page
+@model ApiKeyModel
+@{ this.ViewBag.Title = "Klíč pro přístup přes API"; }
+<h2>@this.ViewBag.Title</h2>
+<form method="post">
+    <table class="form">
+        <tbody>
+            <tr>
+                <th>API klíč:</th>
+                <td>
+                    <code><b>@Model.Key</b></code>
+                    <div>(záleží na velkých a malých písmenech)</div>
+                </td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td>
+                    <input type="submit" value="Reset" />
+                    <a asp-page="Index" class="button secondary">Storno</a>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+</form>
