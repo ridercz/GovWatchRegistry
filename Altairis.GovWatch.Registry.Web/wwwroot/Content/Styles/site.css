@@ -328,6 +328,20 @@ table.grid {
       border-bottom: none; }
     table.grid tbody tr:hover {
       background-color: #def1dc; }
+  table.grid tfoot {
+    border-top: 3px double #439539; }
   table.grid a {
     text-decoration: none; }
+
+.pager p {
+  margin: 0;
+  padding: 5px;
+  text-align: center;
+  color: #439539; }
+
+.pager .prev {
+  float: left; }
+
+.pager .next {
+  float: right; }
 
