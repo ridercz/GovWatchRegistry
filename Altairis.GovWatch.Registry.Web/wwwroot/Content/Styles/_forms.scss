@@ -1,6 +1,7 @@
 ﻿@import "_vars.scss";
 
 @mixin button {
+    @include rounded;
     display: inline-block;
     text-align: center;
     font-family: $FontSans;
@@ -10,7 +11,6 @@
     background-color: $Green;
     color: $TrueWhite;
     padding: $Padding 3ex;
-    border-radius: 3px;
     text-decoration: none;
     cursor: pointer;
     line-height: 100%;
@@ -37,13 +37,13 @@ form {
         box-sizing: border-box;
 
         &[type=text], &[type=password], &[type=email], &[type=url], textarea, .textbox {
+            @include rounded;
             font-family: $FontMono;
             font-size: 15px;
             padding: $Padding;
             width: 100%;
             background-color: lighten($Green, 50);
             border: none;
-            border-radius: 3px;
 
             &:focus {
                 border: 1px solid $Green;
@@ -105,7 +105,7 @@ table.form {
     }
 
     .validation-summary-errors {
-        border-radius: 3px;
+        @include rounded;
         background-color: lighten($Orange, 40);
         color: $Orange;
         padding: $Padding;
