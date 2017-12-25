@@ -107,7 +107,10 @@ html {
       color: #eee;
       padding: 10px; }
       html body > nav .userinfo {
-        float: right; }
+        float: right;
+        font-size: 80%;
+        font-weight: bold;
+        line-height: 160%; }
       html body > nav ul {
         list-style-type: none;
         margin: 0;
