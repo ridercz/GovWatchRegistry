@@ -1,4 +1,91 @@
 ﻿@page "{siteId:guid}"
 @model EditModel
-@{ this.ViewBag.Title = "Editace webu"; }
+@{ this.ViewBag.Title = $"Editace webu {this.Model.Input.Name}"; }
 <h2>@this.ViewBag.Title</h2>
+<form method="post">
+    <table class="form">
+        <tbody>
+            <tr class="ghead">
+                <th>Základní údaje</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.Name"></label></th>
+                <td><input asp-for="Input.Name" /></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.Url"></label></th>
+                <td><input asp-for="Input.Url" /></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.CategoryId"></label></th>
+                <td>
+                    <select asp-for="Input.CategoryId" asp-items="Model.CategoryList">
+                        <option value="0" style="font-style:italic">(neurčeno)</option>
+                    </select>
+                </td>
+            </tr>
+            <tr class="ghead">
+                <th>Doplňující údaje</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.AltNames"></label></th>
+                <td><textarea asp-for="Input.AltNames"></textarea></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.Comment"></label></th>
+                <td><textarea asp-for="Input.Comment"></textarea></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.Status"></label></th>
+                <td><select asp-for="Input.Status" asp-items="Html.GetEnumSelectList<WebSiteStatus>()"></select></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.Scope"></label></th>
+                <td><select asp-for="Input.Scope" asp-items="Html.GetEnumSelectList<WebSiteScope>()"></select></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.Importance"></label></th>
+                <td><input asp-for="Input.Importance" /></td>
+            </tr>
+            <tr class="ghead">
+                <th>Neveřejné údaje</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.OwnerEmailAddress"></label></th>
+                <td><input asp-for="Input.OwnerEmailAddress" /></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.OwnerPhoneNumber"></label></th>
+                <td><input asp-for="Input.OwnerPhoneNumber" /></td>
+            </tr>
+            <tr>
+                <th><label asp-for="Input.OwnerComment"></label></th>
+                <td><textarea asp-for="Input.OwnerComment"></textarea></td>
+            </tr>
+            <tr class="ghead">
+                <th>Systémové údaje</th>
+                <td></td>
+            </tr>
+            <tr>
+                <th>Vytvořil</th>
+                <td>@Model.CreatedBy; <time value="Model.DateCreated"></time></td>
+            </tr>
+            <tr visible="Model.DateCreated != Model.DateUpdated">
+                <th>Naposledy aktualizoval</th>
+                <td>@Model.UpdatedBy; <time value="Model.DateUpdated"></time></td>
+            </tr>
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td>
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="Uložit" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>

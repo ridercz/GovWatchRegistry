@@ -63,9 +63,9 @@ namespace Altairis.GovWatch.Registry.Web.Resources {
         /// <summary>
         ///   Looks up a localized string similar to Další názvy.
         /// </summary>
-        public static string AltName {
+        public static string AltNames {
             get {
-                return ResourceManager.GetString("AltName", resourceCulture);
+                return ResourceManager.GetString("AltNames", resourceCulture);
             }
         }
         
@@ -84,6 +84,15 @@ namespace Altairis.GovWatch.Registry.Web.Resources {
         public static string Category {
             get {
                 return ResourceManager.GetString("Category", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kategorie.
+        /// </summary>
+        public static string CategoryId {
+            get {
+                return ResourceManager.GetString("CategoryId", resourceCulture);
             }
         }
         
