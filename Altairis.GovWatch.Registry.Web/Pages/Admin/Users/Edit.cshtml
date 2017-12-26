@@ -1,6 +1,6 @@
 ﻿@page "{userId:int:min(1)}"
 @model EditModel
-@{ this.ViewBag.Title = "Editace uživatele"; }
+@{ this.ViewBag.Title = $"Editace uživatele '{this.Model.Input.UserName}'"; }
 <h2>@this.ViewBag.Title</h2>
 <form method="post">
     <table class="form">
