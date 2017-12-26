@@ -70,9 +70,17 @@ form {
         }
     }
 
-    select {
-        box-sizing: border-box;
+    textarea {
         @include textbox;
+        box-sizing: border-box;
+        height: 10em;
+        overflow-x: auto;
+        overflow-y: scroll;
+    }
+
+    select {
+        @include textbox;
+        box-sizing: border-box;
     }
 }
 

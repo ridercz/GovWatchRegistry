@@ -223,15 +223,33 @@ form input {
     height: 20px;
     vertical-align: text-bottom; }
 
-form select {
-  box-sizing: border-box;
+form textarea {
   border-radius: 3px;
   font-family: "ibm_plex_mono", Consolas, "Courier New", Courier, Monospace;
   font-size: 15px;
   padding: 10px;
   width: 100%;
   background-color: #def1dc;
-  border: 1px solid #def1dc; }
+  border: 1px solid #def1dc;
+  box-sizing: border-box;
+  height: 10em;
+  overflow-x: auto;
+  overflow-y: scroll; }
+  form textarea.input-validation-error {
+    background-color: #fde3d9;
+    border: 1px solid #f26631; }
+  form textarea:focus {
+    border: 1px solid #439539; }
+
+form select {
+  border-radius: 3px;
+  font-family: "ibm_plex_mono", Consolas, "Courier New", Courier, Monospace;
+  font-size: 15px;
+  padding: 10px;
+  width: 100%;
+  background-color: #def1dc;
+  border: 1px solid #def1dc;
+  box-sizing: border-box; }
   form select.input-validation-error {
     background-color: #fde3d9;
     border: 1px solid #f26631; }
