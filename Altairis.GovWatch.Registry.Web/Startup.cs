@@ -73,6 +73,12 @@ namespace Altairis.GovWatch.Registry.Web {
                 PickupFolderName = appSettings.Mailing.PickupFolder,
                 DefaultFrom = new MailAddressDto(appSettings.Mailing.SenderAddress, appSettings.Mailing.SenderName)
             });
+            services.Configure<Altairis.TagHelpers.TimeTagHelperOptions>(options => {
+                options.NullDateFormatter = () => "nikdy";
+                options.TodayDateFormatter = value => $"dnes, {value:t}";
+                options.YesterdayDateFormatter = value => $"včera, {value:t}";
+                options.TomorrowDateFormatter = value => $"zítra, {value:t}";
+            });
         }
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, RegistryDbContext dc, UserManager<ApplicationUser> userManager, RoleManager<ApplicationRole> roleManager) {
