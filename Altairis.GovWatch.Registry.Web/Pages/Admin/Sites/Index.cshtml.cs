@@ -18,7 +18,7 @@ namespace Altairis.GovWatch.Registry.Web.Pages.Admin.Sites
         }
 
         public async Task OnGetAsync(int pageNumber) {
-            await base.GetData(_dc.WebSites, pageNumber, 20);
+            await base.GetData(_dc.WebSites.OrderBy(x=>x.Name), pageNumber, 20);
         }
 
     }
