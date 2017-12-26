@@ -59,6 +59,11 @@ form {
             @include textbox;
         }
 
+        &[type=tel], &[type=number] {
+            @include textbox;
+            max-width: 10em;
+        }
+
         &[type=submit], &[type=button] {
             @include button;
         }

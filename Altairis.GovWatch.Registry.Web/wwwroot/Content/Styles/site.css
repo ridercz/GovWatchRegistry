@@ -196,6 +196,20 @@ form input {
       border: 1px solid #f26631; }
     form input[type=text]:focus, form input[type=password]:focus, form input[type=email]:focus, form input[type=url]:focus, form input textarea:focus, form input .textbox:focus {
       border: 1px solid #439539; }
+  form input[type=tel], form input[type=number] {
+    border-radius: 3px;
+    font-family: "ibm_plex_mono", Consolas, "Courier New", Courier, Monospace;
+    font-size: 15px;
+    padding: 10px;
+    width: 100%;
+    background-color: #def1dc;
+    border: 1px solid #def1dc;
+    max-width: 10em; }
+    form input[type=tel].input-validation-error, form input[type=number].input-validation-error {
+      background-color: #fde3d9;
+      border: 1px solid #f26631; }
+    form input[type=tel]:focus, form input[type=number]:focus {
+      border: 1px solid #439539; }
   form input[type=submit], form input[type=button] {
     border-radius: 3px;
     display: inline-block;
