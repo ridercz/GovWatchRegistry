@@ -1,0 +1,23 @@
+﻿@page
+@model IndexModel
+@{ this.ViewBag.Title = "Seznam kategorií"; }
+<h2>@this.ViewBag.Title</h2>
+<ul class="toolbar">
+    <li><a asp-page="Create" title="Nová kategorie"><i class="far fa-plus-circle"></i></a></li>
+</ul>
+<table class="grid">
+    <thead>
+        <tr>
+            <th>Název</th>
+            <th>Komentář</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in this.Model.Data) {
+            <tr>
+                <th><a asp-page="Edit" asp-route-categoryId="@item.Id"><i class="far fa-tag"></i> @item.Name</a></th>
+                <td trim-length="80">@item.Comment</td>
+            </tr>
+        }
+    </tbody>
+</table>

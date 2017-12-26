@@ -64,6 +64,7 @@ namespace Altairis.GovWatch.Registry.Web {
                 options.Conventions.AuthorizeFolder("/Admin", "IsLoggedIn");
                 options.Conventions.AuthorizeFolder("/Admin/Sites", "IsOperator");
                 options.Conventions.AuthorizeFolder("/Admin/Users", "IsAdministrator");
+                options.Conventions.AuthorizeFolder("/Admin/Categories", "IsAdministrator");
             });
 
             // Configure other services

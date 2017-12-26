@@ -1,0 +1,20 @@
+﻿@page "{categoryId:int:min(1)}"
+@model EditModel
+@{ this.ViewBag.Title = $"Editace kategorie '{this.Model.Input.Name}'"; }
+<h2>@this.ViewBag.Title</h2>
+<form method="post">
+    <table class="form">
+        <tbody>
+            @Html.EditorFor(x => x.Input)
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td>
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="Uložit" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>

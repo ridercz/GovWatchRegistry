@@ -1,0 +1,20 @@
+﻿@page
+@model CreateModel
+@{ this.ViewBag.Title = "Nová kategorie"; }
+<h2>@this.ViewBag.Title</h2>
+<form method="post">
+    <table class="form">
+        <tbody>
+            @Html.EditorFor(x=>x.Input)
+        </tbody>
+        <tfoot>
+            <tr>
+                <th></th>
+                <td>
+                    <div asp-validation-summary="All"></div>
+                    <input type="submit" value="Vytvořit" />
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+</form>
