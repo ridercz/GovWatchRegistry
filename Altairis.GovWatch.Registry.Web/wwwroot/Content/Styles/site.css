@@ -312,6 +312,14 @@ table.form {
   table.form tfoot td, table.form tfoot th {
     border-top: 1px dotted #99d592;
     padding: 10px 10px 10px 0; }
+  table.form tr.ghead {
+    border-bottom: 1px dotted #99d592;
+    vertical-align: bottom; }
+    table.form tr.ghead th {
+      color: #439539;
+      font-weight: bold; }
+    table.form tr.ghead td {
+      font-size: 80%; }
   table.form .validation-summary-valid {
     display: none; }
   table.form .validation-summary-errors {
